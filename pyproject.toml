@@ -1,0 +1,20 @@
+[project]
+name = "biohack"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "crawl4ai>=0.5.0.post8",
+    "ipysigma>=0.24.5",
+    "lancedb>=0.21.2",
+    "networkx>=3.4.2",
+    "pandas>=2.2.3",
+    "polars>=1.27.1",
+    "pygithub>=2.6.1",
+    "pygraphml>=2.4.2",
+    "pyld>=2.0.4",
+    "pyoxigraph>=0.4.9",
+    "rdflib>=7.1.4",
+    "yfiles-jupyter-graphs>=1.10.2",
+]

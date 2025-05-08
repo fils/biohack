@@ -1,0 +1,105 @@
+direction:right
+
+
+classes: {
+    coreclass: {
+        width: 400
+        height: 150
+                   style: {
+                        stroke-width: 1
+                        font-size: 26
+                        fill: "#44C7B1"
+                        shadow: false
+                        border-radius: 0
+                   }
+          }
+    propclass: {
+        width: 400
+        height: 150
+                   style: {
+                         stroke-width: 1
+                         font-size: 26
+                         fill: honeydew
+                        shadow: false
+                        border-radius: 0
+                   }
+          }
+    coreclassspan: {
+        width: 400
+                   style: {
+                        stroke-width: 1
+                        fill: "#FFE4A7"
+                        shadow: false
+                        border-radius: 0
+                   }
+          }
+    propclassspan: {
+        width: 400
+                   style: {
+                         stroke-width: 1
+                         font-size: 26
+                         fill: "#D5B369"
+                        shadow: false
+                        border-radius: 0
+                   }
+          }
+}
+
+*.class: propclass
+s.class: coreclass
+
+s: Source documents
+l: LanceDB
+eg: Entity Graph
+
+l {
+documents: {
+  shape: sql_table
+  vector: Vector(768)
+  id: str {constraint: primary_key}
+  text: str
+  docName: str
+  pagenum: int
+}
+
+entities:  {
+  shape: sql_table
+  subject: str
+  lable: str
+  object: str
+  confidence: str
+  iri: str {constraint: primary_key}
+  chunk: str
+  page: str
+  subject_label: str
+  subject_text: str
+  object_label: str
+  object_text: str
+}
+
+    q1results: {
+        shape: sql_table
+        iri: sring
+    }
+
+    reqresp : {
+        shape: sql_table
+        markdown: sring
+    }
+
+}
+
+
+
+s -> l.q1results
+l.q1results -> l.reqresp
+l.reqresp -> l.documents
+l.documents.text -> l.entities.chunk: relikTest.py
+l.documents.id -> l.entities.iri
+l.documents.pagenum -> l.entities.page
+# documents.docName -> entities.
+
+l.entities.lable -> eg
+l.entities.subject_text -> eg: relikdataframes2graph.py
+l.entities.object_text -> eg
+
