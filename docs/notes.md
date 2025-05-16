@@ -3,6 +3,12 @@
 The following are some prompts and results associated with extracting hypotheis and 
 related properties from text.
 
+Next, I will compare this approach with the following.   I will convert the paper to a 
+graph via entity resolution.  I can then look for clusters and motifs in there that can be 
+extracted and passed to the LLM to see if it can formulate similar results or do other
+types of inferencing.  
+
+
 ## Elements
 
 * Hypothesis: The main research question or proposed explanation the paper tests (e.g., "Does X affect Y?").
