@@ -19,37 +19,50 @@ related properties from text.
 ## Prompt
 
 ```
-Instructions:Analyze the provided text from a biosciences research paper and extract the following elements. For each element, provide a concise summary or direct quote from the text where possible. If an element is not explicitly stated, indicate "Not explicitly mentioned" or infer it from the context if reasonable. Organize your output with clear headings for each element.
+Instructions:Analyze the provided text from a biosciences research paper and extract the following elements. 
+For each element, provide a concise summary or direct quote from the text where possible. If an element is not 
+explicitly stated, indicate "Not explicitly mentioned" or infer it from the context if reasonable. 
+Organize your output with clear headings for each element.
 
 Hypothesis  
-Identify the main hypothesis or research question the paper addresses. Look for statements like "We hypothesize that..." or "This study aims to determine..." in the introduction or abstract.
+Identify the main hypothesis or research question the paper addresses. Look for statements 
+like "We hypothesize that..." or "This study aims to determine..." in the introduction or abstract.
 
 Supporting Arguments  
-Extract key evidence or reasoning supporting the hypothesis, such as experimental data, observations, or references to prior studies. Check the results, discussion, or literature review sections.
+Extract key evidence or reasoning supporting the hypothesis, such as experimental data, 
+observations, or references to prior studies. Check the results, discussion, or literature review sections.
 
 Research Opportunities  
-Highlight areas suggested for further research or gaps in knowledge. Look for phrases like "Future studies could explore..." or "This raises questions about..." in the discussion or conclusion.
+Highlight areas suggested for further research or gaps in knowledge. Look for phrases 
+like "Future studies could explore..." or "This raises questions about..." in the discussion or conclusion.
 
 Methodology  
-Summarize the methods or techniques used to test the hypothesis, including experimental design, data collection, and analysis. Typically found in the "Methods" or "Materials and Methods" section.
+Summarize the methods or techniques used to test the hypothesis, including experimental 
+design, data collection, and analysis. Typically found in the "Methods" or "Materials and Methods" section.
 
 Results  
-Describe the main findings or outcomes of the study, including quantitative data (e.g., measurements, statistics) or qualitative observations. Look in the "Results" section, tables, or figures.
+Describe the main findings or outcomes of the study, including quantitative data (e.g., 
+measurements, statistics) or qualitative observations. Look in the "Results" section, tables, or figures.
 
 Conclusions  
-Extract the final interpretations or decisions drawn from the research, such as whether the hypothesis was supported. Found in the "Conclusion" or "Discussion" section.
+Extract the final interpretations or decisions drawn from the research, such as whether 
+the hypothesis was supported. Found in the "Conclusion" or "Discussion" section.
 
 Limitations  
-Note any constraints, weaknesses, or biases mentioned that might affect the results. Look for phrases like "A limitation of this study is..." in the discussion.
+Note any constraints, weaknesses, or biases mentioned that might affect the results. 
+Look for phrases like "A limitation of this study is..." in the discussion.
 
 Future Directions  
-Identify specific suggestions for future research based on the findings. Look for actionable recommendations like "Future work should investigate..." in the conclusion.
+Identify specific suggestions for future research based on the findings. Look for 
+actionable recommendations like "Future work should investigate..." in the conclusion.
 
 Key Findings  
-Highlight the most significant or impactful results emphasized by the authors. Check the abstract, conclusion, or discussion for standout points.
+Highlight the most significant or impactful results emphasized by the authors. 
+Check the abstract, conclusion, or discussion for standout points.
 
 References  
-List key studies or papers cited in the text that provide context or support. Found in in-text citations or the reference list.
+List key studies or papers cited in the text that provide context or support. 
+Found in in-text citations or the reference list.
 
 ```
 
@@ -58,7 +71,7 @@ Using this approach on the resource,  https://www.aging-us.com/article/205322/te
 ## Results
 
 ```json
-
+{
   "hypothesis": [
     "This study hypothesizes that Angiopep-2-based chemical exchange saturation transfer (CEST) MRI can visualize and assess the clearance function of the glymphatic system in vivo, as indicated by statements like 'we describe an MRI method based on chemical exchange saturation transfer (CEST) of the Angiopep-2 probe to visualize the clearance function of the glymphatic system.'"
   ],
