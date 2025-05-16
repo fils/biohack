@@ -1,8 +1,8 @@
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-SELECT DISTINCT ?sub
+SELECT DISTINCT ?s ?p ?o
 WHERE {
-   ?sub ?pred ?obj .
-    FILTER regex(str(?sub), "doi\\.org")
+   ?s ?p ?o .
+   FILTER regex(str(?o), "doi.org")
  }
 

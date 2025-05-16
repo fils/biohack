@@ -6,7 +6,16 @@
 ### Setup
 
 I'm assuming you have set up a working environment with your triplestore and other systems you want.
-Note this repo is using the UV package management sytsem. (see: https://docs.astral.sh/uv/)
+Note this repo is using the UV package management system. (see: https://docs.astral.sh/uv/)
+
+### Notebook prototype
+
+Just playing with some established patterns to quickly load the graph. Used 
+this notebook: [typeTypeView.ipynb](notebooks/typeTypeView.ipynb).  Eventually
+you get to this type to type style network. 
+
+![img.png](./docs/img.png)
+
 
 ### RDF load Quick start 
 
@@ -29,7 +38,7 @@ We can run these:
 ```
 
 ```bash
-./scripts/github_jsonld_sitemap.py --output output/jdlnew-sitemap.xml https://github.com/bio-xyz/BioAgents sampleJsonLdsNew 
+./scripts/github_jsonld_sitemap.py --output output/jldnew-sitemap.xml https://github.com/bio-xyz/BioAgents sampleJsonLdsNew 
 ```
 
 To load out JSON-LD now, we can use the sitemap to pull the resources directly from GitHub.
@@ -41,13 +50,13 @@ To load out JSON-LD now, we can use the sitemap to pull the resources directly f
 and
 
 ```bash
-./scripts/loadSitemapToTriplestore.sh ./output/jldnew-sitemap.xml http://homelab.lan:7878/store
-```
+`./scripts/loadSitemapToTriplestore.sh ./output/jldnew-sitemap.xml http://homelab.lan:7878/store
+````
 
 
 If you have been working and testing your triplestore, we can reset it to empty with:
 
-> WARNING: use with caution!
+> WARNING: use this with caution!
 
 ```bash
 curl -i -X POST -H 'Content-Type: application/sparql-update' --data 'DROP ALL' http://homelab.lan:7878/update
@@ -61,6 +70,25 @@ curl -i -X POST -H 'Content-Type: application/sparql-update' --data 'DROP ALL' h
 
 ```bash
 python biohack.py query --source http://homelab.lan:7878/query  --sink foo  --query ./sparql/getsubjects.rq --table bar
+```
+
+#### convert mode
+
+The convert mode allows you to convert HTML or PDF documents to Markdown format. You can specify either a URL or a local file as the input source.
+
+Convert an HTML document from a URL:
+```bash
+python biohack.py convert -url https://example.com -output output/example.md
+```
+
+Convert a local PDF file:
+```bash
+python biohack.py convert -local path/to/document.pdf -output output/document.md
+```
+
+This functionality uses html2text for HTML conversion and PyPDF2 for PDF conversion. Make sure to install the required dependencies:
+```bash
+pip install html2text PyPDF2
 ```
 
 
@@ -84,5 +112,3 @@ https://github.com/bio-xyz/plugin-bioagent
     * https://github.com/microsoft/markitdown
     * https://github.com/docling-project/docling
 * Then feed via BAML
-
-

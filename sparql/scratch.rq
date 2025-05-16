@@ -1,0 +1,20 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+#SELECT DISTINCT ?s ?p ?o
+SELECT DISTINCT ?s ?usesDataFrom ?source ?abstract ?subject
+WHERE {
+
+            BIND (<https://hypothesis.bioagent.ai/2azkuprmtc9> AS ?s)
+        #    ?s ?p ?o
+        ?s a <http://purl.org/spar/deo/FutureWork> .
+        ?s <http://purl.org/dc/terms/abstract> ?abstract .
+        ?s <http://purl.org/spar/cito/usesDataFrom> ?usesDataFrom .
+        ?s <http://purl.org/dc/terms/source> ?source .
+        ?s <http://purl.org/dc/terms/subject> ?subject .
+#        OPTIONAL {
+#            ?s <http://purl.org/dc/terms/references> ?refs .
+#             }
+
+ }
+

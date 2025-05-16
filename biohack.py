@@ -3,6 +3,7 @@ import sys
 
 from defs import etl_query
 from defs import etl_fetch
+from defs import etl_convert
 
 
 def main():
@@ -20,6 +21,12 @@ def main():
     fetch_parser = subparsers.add_parser("fetch", help="fetch resources mode operations")
     fetch_parser.add_argument("--source", required=True, help="Source file/location")
 
+    # Convert mode parser
+    convert_parser = subparsers.add_parser("convert", help="Convert HTML or PDF to Markdown")
+    convert_parser.add_argument("-url", help="URL of HTML or PDF document to convert")
+    convert_parser.add_argument("-local", help="Path to local HTML or PDF file to convert")
+    convert_parser.add_argument("-output", required=True, help="Output file name for the markdown")
+
     args = parser.parse_args()
 
     if args.mode is None:
@@ -29,7 +36,8 @@ def main():
     # Mode selection
     mode_handlers = {
         "query": etl_query.query_mode,
-        "fetch": etl_fetch.fetch_resources
+        "fetch": etl_fetch.fetch_resources,
+        "convert": etl_convert.convert_document
     }
 
     # Execute the selected mode with appropriate parameters
@@ -37,6 +45,8 @@ def main():
         mode_handlers[args.mode](args.source, args.sink, args.query, args.table)
     elif args.mode == "fetch":
         mode_handlers[args.mode](args.source)
+    elif args.mode == "convert":
+        mode_handlers[args.mode](url=args.url, local_file=args.local, output_file=args.output)
 
 if __name__ == "__main__":
     main()
