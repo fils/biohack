@@ -1,5 +1,8 @@
 # Hypothesis playground
 
+The following are some prompts and results associated with extracting hypotheis and 
+related properties from text.
+
 ## Elements
 
 * Hypothesis: The main research question or proposed explanation the paper tests (e.g., "Does X affect Y?").
@@ -50,7 +53,7 @@ List key studies or papers cited in the text that provide context or support. Fo
 
 ```
 
-
+Using this approach on the resource,  https://www.aging-us.com/article/205322/text, resulted in the following output.
 
 ## Results
 
