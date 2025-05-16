@@ -70,6 +70,8 @@ Using this approach on the resource,  https://www.aging-us.com/article/205322/te
 
 ## Results
 
+Direct link to [results1.json](results1.json) for easier reading.  Also included inline below.  
+
 ```json
 {
   "hypothesis": [
