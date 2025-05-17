@@ -1,12 +1,51 @@
 # Hypothesis playground
 
-The following are some prompts and results associated with extracting hypotheis and 
-related properties from text.
+## About
 
-Next, I will compare this approach with the following.   I will convert the paper to a 
-graph via entity resolution.  I can then look for clusters and motifs in there that can be 
-extracted and passed to the LLM to see if it can formulate similar results or do other
-types of inferencing.  
+This document contains some prompts and results associated with extracting hypothesis and related properties from a text.
+
+### Resource to Markdown and JSON results
+
+For this, you can follow:
+
+#### convert mode
+
+The convert mode allows you to convert HTML or PDF documents to Markdown format. You can specify either a URL or a local file as the input source.
+
+Convert an HTML document from a URL:
+```bash
+python biohack.py convert -url https://example.com -output output/example.md
+```
+
+Convert a local PDF file:
+```bash
+python biohack.py convert -local path/to/document.pdf -output output/document.md
+```
+
+This functionality uses html2text for HTML conversion and PyPDF2 for PDF conversion. Make sure to install the required dependencies:
+
+#### Hypothesis from LLM
+
+Use the code bamlTest.py to use OpenAI (set the key with something like)
+
+```bash
+export OPENAI_API_KEY="..."
+```
+
+> Note: Since this is using [BAML](https://github.com/BoundaryML/baml) it's easy to 
+> modify [clients.baml](baml_src/clients.baml) and add in any client.  Ollama, for local,
+> Xai, Google Gemini, etc.  You will then need to modify the ``` client "openai/gpt-4o" ```
+> in [hypothesis.baml](baml_src/hypothesis.baml) and rerun ```baml-cli generate```
+
+Then run with
+
+```bash
+python bamlTest.py --input input.md --output output.json
+```
+
+### Future
+
+As a next step, I will compare this approach with the following. I will convert the paper to a graph via entity resolution.  I can then look for clusters and motifs in there that can be extracted and passed to the LLM to see if it can formulate similar results or do other types of inferencing.  
 
 
 ## Elements
