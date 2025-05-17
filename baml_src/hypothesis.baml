@@ -16,8 +16,8 @@ class Idea {
 function ExtractIdea(idea: string) -> Idea {
   // Specify a client as provider/model-name
   // you can use custom LLM params with a custom client name from clients.baml like "client CustomHaiku"
-  // client "openai/gpt-4o" // Set OPENAI_API_KEY to use this client.
-  client "XAI"                  // use xai
+  client "openai/gpt-4o" // Set OPENAI_API_KEY to use this client.
+  //client "XAI"                  // use xai
   prompt #"
 
     Instructions:

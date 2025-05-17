@@ -11,7 +11,7 @@ Note this repo is using the UV package management system. (see: https://docs.ast
 ### Notebook prototype
 
 Just playing with some established patterns to quickly load the graph. Used 
-this notebook: [typeTypeView.ipynb](notebooks/typeTypeView.ipynb).  Eventually
+this notebook: [typeTypeView.ipynb](notebooks/typeTypeView.ipynb).  Eventually, 
 you get to this type to type style network. 
 
 ![img.png](./docs/img.png)
@@ -19,7 +19,7 @@ you get to this type to type style network.
 
 ### RDF load Quick start 
 
-> NOTE: This is basically just the jsonldToTriple.ts redone into python.  ref: https://ai-docs.bio.xyz/developers/knowledge-graphs
+> NOTE: This is basically just the jsonldToTriple.ts read into python.  ref: https://ai-docs.bio.xyz/developers/knowledge-graphs
 
 First set up your triplestore, I'll use oxigraph, but later we can make this work for others too.  
 
@@ -87,28 +87,35 @@ python biohack.py convert -local path/to/document.pdf -output output/document.md
 ```
 
 This functionality uses html2text for HTML conversion and PyPDF2 for PDF conversion. Make sure to install the required dependencies:
+
+#### Hypothesis from LLM
+
+Use the code bamlTest.py to use OpenAI (set the key with something like)
+
 ```bash
-pip install html2text PyPDF2
+export OPENAI_API_KEY="..."
+```
+
+Then run with
+
+```bash
+python bamlTest.py --input input.md --output output.json
 ```
 
 
-Also worked up a notebook ([typeTypeView.ipynb](notebooks/typeTypeView.ipynb)) to play around with search to visualization approaches.  
-
-### BioAgent repo
-
-https://github.com/bio-xyz/plugin-bioagent
-
-### DKG (origin trail)
-
-
-* https://docs.origintrail.io/build-with-dkg/quickstart-test-drive-the-dkg-in-5-mins
 
 
 ## Notes
 
-* HTML to Markdown 
-  *  crawl4ai: https://github.com/unclecode/crawl4ai 
-* PDF to Markdown
-    * https://github.com/microsoft/markitdown
-    * https://github.com/docling-project/docling
-* Then feed via BAML
+```bash
+pip install html2text PyPDF2
+```
+
+Also worked up a notebook ([typeTypeView.ipynb](notebooks/typeTypeView.ipynb)) to play around with search to visualization approaches.  
+
+
+References: 
+
+* BioAgent repo: https://github.com/bio-xyz/plugin-bioagent
+* DKG (origin trail): https://docs.origintrail.io/build-with-dkg/quickstart-test-drive-the-dkg-in-5-mins
+
