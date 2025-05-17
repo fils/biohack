@@ -96,6 +96,11 @@ Use the code bamlTest.py to use OpenAI (set the key with something like)
 export OPENAI_API_KEY="..."
 ```
 
+> Note: Since this is using [BAML](https://github.com/BoundaryML/baml) it's easy to 
+> modify [clients.baml](baml_src/clients.baml) and add in any client.  Ollama, for local,
+> Xai, Google Gemini, etc.  You will then need to modify the ``` client "openai/gpt-4o" ```
+> in [hypothesis.baml](baml_src/hypothesis.baml) and rerun ```baml-cli generate```
+
 Then run with
 
 ```bash
