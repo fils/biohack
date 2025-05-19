@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "crawl4ai>=0.5.0.post8",
+    "gliner>=0.2.19",
     "ipysigma>=0.24.5",
     "lancedb>=0.21.2",
     "networkx>=3.4.2",

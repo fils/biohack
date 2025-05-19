@@ -22,11 +22,15 @@ from .globals import DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIM
 class TypeBuilder(_TypeBuilder):
     def __init__(self):
         super().__init__(classes=set(
-          ["Idea",]
+          ["Assertion","Idea",]
         ), enums=set(
           []
         ), runtime=DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIME)
 
+
+    @property
+    def Assertion(self) -> "AssertionAst":
+        return AssertionAst(self)
 
     @property
     def Idea(self) -> "IdeaAst":
@@ -35,6 +39,48 @@ class TypeBuilder(_TypeBuilder):
 
 
 
+
+class AssertionAst:
+    def __init__(self, tb: _TypeBuilder):
+        _tb = tb._tb # type: ignore (we know how to use this private attribute)
+        self._bldr = _tb.class_("Assertion")
+        self._properties: typing.Set[str] = set([ "Cardinal",  "Supporting", ])
+        self._props = AssertionProperties(self._bldr, self._properties)
+
+    def type(self) -> FieldType:
+        return self._bldr.field()
+
+    @property
+    def props(self) -> "AssertionProperties":
+        return self._props
+
+
+class AssertionViewer(AssertionAst):
+    def __init__(self, tb: _TypeBuilder):
+        super().__init__(tb)
+
+    
+    def list_properties(self) -> typing.List[typing.Tuple[str, ClassPropertyViewer]]:
+        return [(name, ClassPropertyViewer(self._bldr.property(name))) for name in self._properties]
+
+
+
+class AssertionProperties:
+    def __init__(self, bldr: ClassBuilder, properties: typing.Set[str]):
+        self.__bldr = bldr
+        self.__properties = properties
+
+    
+
+    @property
+    def Cardinal(self) -> ClassPropertyViewer:
+        return ClassPropertyViewer(self.__bldr.property("Cardinal"))
+
+    @property
+    def Supporting(self) -> ClassPropertyViewer:
+        return ClassPropertyViewer(self.__bldr.property("Supporting"))
+
+    
 
 class IdeaAst:
     def __init__(self, tb: _TypeBuilder):

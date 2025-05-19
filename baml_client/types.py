@@ -40,6 +40,10 @@ def all_succeeded(checks: Dict[CheckName, Check]) -> bool:
 
 
 
+class Assertion(BaseModel):
+    Cardinal: List[str]
+    Supporting: List[str]
+
 class Idea(BaseModel):
     hypothesis: List[str]
     supportingArguments: List[str]

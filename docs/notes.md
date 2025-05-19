@@ -156,3 +156,54 @@ Direct link to [results1.json](results1.json) for easier reading.  Also included
 }
 
 ```
+
+
+## Assertions
+
+
+```text
+
+Extract the most significant Cardinal Assertions from the research paper.
+Cardinal Assertions are the novel, significant, or central claims that
+represent the core contribution of the research. These are often found
+in the abstract, introduction, results, and discussion sections and may
+use language such as "we found that," "our results show," or
+"this study demonstrates."
+ 
+ For example, a Cardinal Assertion might be: "This study demonstrates 
+ that X leads to Y, challenging the previous understanding that 
+ Z is the primary factor."
+
+For each Cardinal Assertion, list the corresponding Supporting 
+Assertions that provide context, methodology, provenance, or 
+evidence. Supporting Assertions are typically found in the methods
+and introduction sections and may include phrases like "using the method of,"
+"based on data from," or "as defined by." For example, a 
+Supporting Assertion might be: "The data was collected from a 
+sample of 100 participants using a randomized controlled trial design."
+
+Ensure that all extracted assertions are directly supported by the 
+text and do not infer or generate information not explicitly stated
+in the research paper. If you do not find anything simply
+do not repot for that elements, do not state that nothing is found.
+
+```
+
+```json
+{
+  "Cardinal": [
+    "This study demonstrates the feasibility of using Angiopep-2 CEST MRI to visualize the clearance function of the glymphatic system.",
+    "The results show that damage to the glymphatic clearance system impedes the clearance of Angiopep-2, resulting in more Angiopep-2 remaining in the brain.",
+    "We found that in rats with impaired glymphatic system clearance function, such as the DCLN and OLD rats, the CESTR values were elevated compared to normal SD rats after Angiopep-2 injection."
+  ],
+  "Supporting": [
+    "We describe an MRI method based on chemical exchange saturation transfer (CEST) of the Angiopep-2 probe to visualize the clearance function of the glymphatic system.",
+    "Using a rat model, we injected Angiopep-2 via the tail vein and performed _in vivo_ MRI at 7 T to track differences in Angiopep-2 signal changes.",
+    "The same principles were applied in a bilateral deep cervical lymph node ligation rat model and in ageing rats.",
+    "Fluorescence imaging confirmed that Angiopep-2 can penetrate the blood-brain barrier by binding to low-density lipoprotein receptor-related protein 1 (LRP-1).",
+    "Chemical exchange saturation transfer (CEST) imaging allows noninvasive tracking of substances at the molecular level and was used to assess glymphatic clearance in rat models.",
+    "FITC-Angiopep-2 was used for further validation in brain parenchyma, indicating impaired glymphatic clearance in the DCLN group compared to SHAM."
+  ]
+}
+
+```

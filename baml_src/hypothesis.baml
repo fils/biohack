@@ -21,7 +21,7 @@ function ExtractIdea(idea: string) -> Idea {
   prompt #"
 
     Instructions:
-    Analyze the provided text from a biosciences research paper and extract the
+    Analyze the provided text from a research paper and extract the
     following elements. For each element, provide a concise summary or direct quote from the
     text where possible. If an element is not explicitly stated,
     indicate "Not explicitly mentioned" or infer it from the context if reasonable.
@@ -57,6 +57,9 @@ function ExtractIdea(idea: string) -> Idea {
     References
     List key studies or papers cited in the text that provide context or support. Found in in-text citations or the reference list.
 
+    Ensure that all extracted elements are directly supported by the text and do not
+    infer or generate information not explicitly stated in the research paper.  If you do not find anything simply
+    do not repot for that elements, do not state that nothing is found.
 
     {{ idea }}
 

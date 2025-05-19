@@ -20,13 +20,19 @@ def workOnIdea(mdtext: str) -> Idea:
   response = b.ExtractIdea(mdtext)
   return response
 
+def workOnAssertion(mdtext: str) -> Idea:
+  response = b.ExtractAssertion(mdtext)
+  return response
+
 def main():
   # Set up command line argument parsing
-  parser = argparse.ArgumentParser(description='Process markdown text and extract ideas.')
+  parser = argparse.ArgumentParser(description='Process markdown text and extract ideas or assertions.')
   parser.add_argument('--input', '-i', required=True, 
                      help='Input markdown file path')
   parser.add_argument('--output', '-o', required=True, 
                      help='Output file path for JSON results')
+  parser.add_argument('--mode', '-m', choices=['idea', 'assertion'], default='idea',
+                     help='Processing mode: "idea" for ExtractIdea or "assertion" for ExtractAssertion (default: idea)')
   
   args = parser.parse_args()
   
@@ -34,7 +40,11 @@ def main():
   if markdown is None:
     sys.exit(1)
     
-  r = workOnIdea(markdown)
+  # Choose the processing function based on the mode argument
+  if args.mode == 'assertion':
+    r = workOnAssertion(markdown)
+  else:  # Default to 'idea'
+    r = workOnIdea(markdown)
   
   # Save to output-file
   try:

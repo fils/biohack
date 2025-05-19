@@ -1,0 +1,8 @@
+Extract the most significant Cardinal Assertions from the research paper. Cardinal Assertions are the novel, significant, or central claims that represent the core contribution of the research. These are often found in the abstract, introduction, results, and discussion sections and may use language such as "we found that," "our results show," or "this study demonstrates." For example, a Cardinal Assertion might be: "This study demonstrates that X leads to Y, challenging the previous understanding that Z is the primary factor."
+
+For each Cardinal Assertion, list the corresponding Supporting Assertions that provide context, methodology, provenance, or evidence. Supporting Assertions are typically found in the methods and introduction sections and may include phrases like "using the method of," "based on data from," or "as defined by." For example, a Supporting Assertion might be: "The data was collected from a sample of 100 participants using a randomized controlled trial design."
+
+Ensure that all extracted assertions are directly supported by the text and do not infer or generate information not explicitly stated in the research paper.
+
+
+The above is based on the guidance at:  https://ai-docs.bio.xyz/vision-and-mission/hackathon-ideas/individual-plugins/finding-and-differentiating-cardinal-vs-supporting-assertions

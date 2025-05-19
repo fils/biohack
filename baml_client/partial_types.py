@@ -35,6 +35,10 @@ class StreamState(BaseModel, Generic[T]):
     state: Literal["Pending", "Incomplete", "Complete"]
 
 
+class Assertion(BaseModel):
+    Cardinal: List[str]
+    Supporting: List[str]
+
 class Idea(BaseModel):
     hypothesis: List[str]
     supportingArguments: List[str]
