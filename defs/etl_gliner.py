@@ -2,7 +2,7 @@ from gliner import GLiNER
 
 model = GLiNER.from_pretrained("urchade/gliner_medium-v2.1")
 
-def my_function(text):
+def process(text):
     labels = [
         "Author", "Researcher", "Scientist", "Corresponding Author", "Collaborator",
         "Patient", "Study Participant", "Institution", "Research Institute", "University",

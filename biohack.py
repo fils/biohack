@@ -1,9 +1,11 @@
 import argparse
 import sys
+import pandas as pd
 
 from defs import etl_query
 from defs import etl_fetch
 from defs import etl_convert
+from defs import etl_gliner  # Add import for etl_gliner function
 
 
 def main():
@@ -27,6 +29,10 @@ def main():
     convert_parser.add_argument("-local", help="Path to local HTML or PDF file to convert")
     convert_parser.add_argument("-output", required=True, help="Output file name for the markdown")
 
+    # Gliner mode parser - new mode
+    gliner_parser = subparsers.add_parser("gliner", help="Process data with etl_gliner")
+    gliner_parser.add_argument("input_string", help="String to process with etl_gliner")
+
     args = parser.parse_args()
 
     if args.mode is None:
@@ -37,7 +43,8 @@ def main():
     mode_handlers = {
         "query": etl_query.query_mode,
         "fetch": etl_fetch.fetch_resources,
-        "convert": etl_convert.convert_document
+        "convert": etl_convert.convert_document,
+        "gliner": lambda input_string: print(etl_gliner.process(input_string))  # Add handler for gliner mode
     }
 
     # Execute the selected mode with appropriate parameters
@@ -47,6 +54,11 @@ def main():
         mode_handlers[args.mode](args.source)
     elif args.mode == "convert":
         mode_handlers[args.mode](url=args.url, local_file=args.local, output_file=args.output)
+    elif args.mode == "gliner":
+        # Call etl_gliner with the input string and print the results
+        results = etl_gliner.process(args.input_string)
+        df = pd.DataFrame(results)
+        print(df)
 
 if __name__ == "__main__":
     main()
