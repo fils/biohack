@@ -45,7 +45,13 @@ python bamlTest.py --input input.md --output output.json
 
 ### Future
 
-As a next step, I will compare this approach with the following. I will convert the paper to a graph via entity resolution.  I can then look for clusters and motifs in there that can be extracted and passed to the LLM to see if it can formulate similar results or do other types of inferencing.  
+As a next step, I will compare this approach with the following. I will convert the paper to a graph via entity resolution. 
+I can then look for clusters and motifs in there that can be extracted and passed to the LLM to see if it 
+can formulate similar results or do other types of inferencing.  
+
+Additionally, these extracted elements could be feed into a vector store and then pulled back for context in 
+RAG type approaches (ref: [BAML RAG](https://docs.boundaryml.com/examples/prompt-engineering/retrieval-augmented-generation) ). 
+This could then be augmented with the entities extracted.
 
 
 ## Elements
