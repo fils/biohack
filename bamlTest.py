@@ -1,5 +1,7 @@
 from baml_client.sync_client import b
 from baml_client.types import Idea
+from baml_client.types import Assertion
+
 import argparse
 import json
 import sys
@@ -20,7 +22,7 @@ def workOnIdea(mdtext: str) -> Idea:
   response = b.ExtractIdea(mdtext)
   return response
 
-def workOnAssertion(mdtext: str) -> Idea:
+def workOnAssertion(mdtext: str) -> Assertion:
   response = b.ExtractAssertion(mdtext)
   return response
 
