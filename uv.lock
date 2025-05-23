@@ -155,6 +155,7 @@ dependencies = [
     { name = "crawl4ai" },
     { name = "gliner" },
     { name = "ipysigma" },
+    { name = "kuzu" },
     { name = "lancedb" },
     { name = "networkx" },
     { name = "pandas" },
@@ -165,6 +166,7 @@ dependencies = [
     { name = "pyoxigraph" },
     { name = "rdflib" },
     { name = "yfiles-jupyter-graphs" },
+    { name = "yfiles-jupyter-graphs-for-kuzu" },
 ]
 
 [package.metadata]
@@ -172,6 +174,7 @@ requires-dist = [
     { name = "crawl4ai", specifier = ">=0.5.0.post8" },
     { name = "gliner", specifier = ">=0.2.19" },
     { name = "ipysigma", specifier = ">=0.24.5" },
+    { name = "kuzu", specifier = ">=0.10.0" },
     { name = "lancedb", specifier = ">=0.21.2" },
     { name = "networkx", specifier = ">=3.4.2" },
     { name = "pandas", specifier = ">=2.2.3" },
@@ -182,6 +185,7 @@ requires-dist = [
     { name = "pyoxigraph", specifier = ">=0.4.9" },
     { name = "rdflib", specifier = ">=7.1.4" },
     { name = "yfiles-jupyter-graphs", specifier = ">=1.10.2" },
+    { name = "yfiles-jupyter-graphs-for-kuzu", specifier = ">=0.0.4" },
 ]
 
 [[package]]
@@ -871,6 +875,26 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/a1/94/766b8199e8a902a4c5ee12a9407a348bbabe9fa22400758576b153d17d8e/jupyterlab_widgets-3.0.14.tar.gz", hash = "sha256:bad03e59546869f026e537e0d170e454259e6dc7048e14041707ca31e523c8a1", size = 203815, upload-time = "2025-04-10T13:00:40.522Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/64/7a/f2479ba401e02f7fcbd3fc6af201eac888eaa188574b8e9df19452ab4972/jupyterlab_widgets-3.0.14-py3-none-any.whl", hash = "sha256:54c33e3306b7fca139d165d6190dc6c0627aafa5d14adfc974a4e9a3d26cb703", size = 213999, upload-time = "2025-04-10T13:00:38.626Z" },
+]
+
+[[package]]
+name = "kuzu"
+version = "0.10.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/3c/48/ebd5b564df0474ec7df294a6209d2453086f2ef0cef930608b176c73a40a/kuzu-0.10.0.tar.gz", hash = "sha256:7c7f975d053749295eaacf7acaccbd345bf852264f5ed25323001bbd9d408f48", size = 4854770, upload-time = "2025-05-08T18:23:11.497Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/d7/56/266dcadd1440088352350b882fdd6f20700072f0fa2734e6bc73de7071c8/kuzu-0.10.0-cp312-cp312-macosx_11_0_arm64.whl", hash = "sha256:b942d14aa1d03a5fee39dddbe0d0d16558b072f2c0fd9c543bb4ba0347d139b7", size = 3687750, upload-time = "2025-05-08T18:22:23.768Z" },
+    { url = "https://files.pythonhosted.org/packages/a1/68/64a782d0e32cf044c8a0ae539e31d1386396adc4c73520b1f8341c3847a3/kuzu-0.10.0-cp312-cp312-macosx_11_0_x86_64.whl", hash = "sha256:6b4c9ef5c3747cfe252f891a1584da8e6990b94d670c29b4967718374b4b803a", size = 4151613, upload-time = "2025-05-08T18:22:25.379Z" },
+    { url = "https://files.pythonhosted.org/packages/ba/af/1e01c8c6a52f57de842920f45af22877f9f4d567dfb4acf15baebd02adcf/kuzu-0.10.0-cp312-cp312-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:2dc42d324c559741b810679146c0aa07a99d3e337a7ed9f63c3f16bf4590bcb4", size = 6097732, upload-time = "2025-05-08T18:22:27.038Z" },
+    { url = "https://files.pythonhosted.org/packages/be/41/8463e2ae6178e7b19f92785456dbf0e181ff76ec6d64a00976c18c18228b/kuzu-0.10.0-cp312-cp312-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:3b8bac1b8e0dc43f66e54d34ee939fcc69e71eba6b76709ebb3de6ea668a16e4", size = 6893038, upload-time = "2025-05-08T18:22:29.13Z" },
+    { url = "https://files.pythonhosted.org/packages/d2/ed/17a9e2278c453aec15656d2518e244a8cee9fd59cb05d97eb051c5548067/kuzu-0.10.0-cp312-cp312-win_amd64.whl", hash = "sha256:7f494f078cf592b9bce2e60d3a9398f91ed8a902b0d8ecd0d7e1868440012d15", size = 4190202, upload-time = "2025-05-08T18:22:31.191Z" },
+    { url = "https://files.pythonhosted.org/packages/21/7c/767460c87e4ec70d6ca630172336677fe23698b99afd52178961a5901dee/kuzu-0.10.0-cp313-cp313-macosx_11_0_arm64.whl", hash = "sha256:8146efda377a1661368b607d23aaee4e46a624f764f79a2ee98540fe6c325cc9", size = 3687910, upload-time = "2025-05-08T18:22:32.837Z" },
+    { url = "https://files.pythonhosted.org/packages/47/70/6b5a6329183446761527df23977133aef26370dd1f8d511652af1d989275/kuzu-0.10.0-cp313-cp313-macosx_11_0_x86_64.whl", hash = "sha256:06a4bf8d9057100a2df576adbe1d50d683cd799d8a97f7fe2cbdd013bf6e439b", size = 4151510, upload-time = "2025-05-08T18:22:34.796Z" },
+    { url = "https://files.pythonhosted.org/packages/65/26/5478eeefe08e04f7087be4659f2b513faa1fad5d0a362abdd86b2e133d90/kuzu-0.10.0-cp313-cp313-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:85fa3af5283632dbc8b98b2146f3fd7fbcdf93ce3430b74fe22df48a09e88540", size = 6097521, upload-time = "2025-05-08T18:22:36.471Z" },
+    { url = "https://files.pythonhosted.org/packages/99/47/f7e9fd9d31823453d4857e589b9cbf58907c7ee5443e61c4ad80011a8f34/kuzu-0.10.0-cp313-cp313-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:4f01f7f3be037b6800dd9cdbbc682ba8449a1fb230769341004e890a87541e48", size = 6892802, upload-time = "2025-05-08T18:22:38.668Z" },
+    { url = "https://files.pythonhosted.org/packages/09/1b/a061123be5919088b88603e5ec07243ea8b680c3c05aee5ab563c1ba9d8b/kuzu-0.10.0-cp313-cp313-win_amd64.whl", hash = "sha256:7a92b0c3047e4e77a227a2e2126864c002e9789d8e3aa8b96d8f61df6a35d09d", size = 4189828, upload-time = "2025-05-08T18:22:40.542Z" },
+    { url = "https://files.pythonhosted.org/packages/30/e7/3a25f52c1a6c5ffb2aa90e81f4d0a0f9cf84897fc024ddb07242bf578887/kuzu-0.10.0-cp313-cp313t-manylinux_2_27_aarch64.manylinux_2_28_aarch64.whl", hash = "sha256:57ed7e0054ac3f2fef4a9c5875f77c15b32ef16ea40d8cc129c492edcce21900", size = 6101063, upload-time = "2025-05-08T18:22:42.159Z" },
+    { url = "https://files.pythonhosted.org/packages/cb/de/469d26653805a47b7fa67b77741e7a2271d1316c531463640cd39d063db0/kuzu-0.10.0-cp313-cp313t-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl", hash = "sha256:964ff28e3540a55e1c865eb8748de6a9385d391b07358ff069c257df3fe76dd0", size = 6897320, upload-time = "2025-05-08T18:22:44.048Z" },
 ]
 
 [[package]]
@@ -2528,6 +2552,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/28/b3/51e95616e2613c01b3a5547d1fe8946aabf95d9c35df0638e27c43cd65e7/yfiles_jupyter_graphs-1.10.2.tar.gz", hash = "sha256:8e619372ab1ad4460db2eabf6609097a2e23b4d31cb5752d248a8dbd5dccfd5a", size = 10705138, upload-time = "2025-04-03T06:35:37.059Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/c2/70/baa5711c4255392a613e0cb5c1fa6d34a3fae3a88e37981997946ebeeea6/yfiles_jupyter_graphs-1.10.2-py3-none-any.whl", hash = "sha256:c0f579e02f5143a222f05ecacf399f91f8ac6fd348a3ee12b88304537cd13600", size = 15676357, upload-time = "2025-04-03T06:35:31.397Z" },
+]
+
+[[package]]
+name = "yfiles-jupyter-graphs-for-kuzu"
+version = "0.0.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "yfiles-jupyter-graphs" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/2a/32/aa9941a4c2ac935cd66f7a8bb3eeb5c7b1d3f097a6f1fbfc359c4a18815c/yfiles_jupyter_graphs_for_kuzu-0.0.4.tar.gz", hash = "sha256:fd03f42b902587398dbd65bc17aa4ff94f7a856748274e83d5001a5b10f9db87", size = 16521, upload-time = "2025-04-23T07:06:26.423Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/45/5d/5c8d30d08e74b25806eba8f8db560377109e701ffc0bdcb44c4b4bea4d46/yfiles_jupyter_graphs_for_kuzu-0.0.4-py3-none-any.whl", hash = "sha256:2853b39d50b072f964fb03b84c1ff8d0b14f5360d7a4792c9d2f09dedbf6708b", size = 13941, upload-time = "2025-04-23T07:06:25.017Z" },
 ]
 
 [[package]]

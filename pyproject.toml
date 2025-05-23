@@ -8,6 +8,7 @@ dependencies = [
     "crawl4ai>=0.5.0.post8",
     "gliner>=0.2.19",
     "ipysigma>=0.24.5",
+    "kuzu>=0.10.0",
     "lancedb>=0.21.2",
     "networkx>=3.4.2",
     "pandas>=2.2.3",
@@ -18,4 +19,5 @@ dependencies = [
     "pyoxigraph>=0.4.9",
     "rdflib>=7.1.4",
     "yfiles-jupyter-graphs>=1.10.2",
+    "yfiles-jupyter-graphs-for-kuzu>=0.0.4",
 ]
