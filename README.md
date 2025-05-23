@@ -7,6 +7,24 @@
 
 I'm assuming you have set up a working environment with your triplestore and other systems you want.
 Note this repo is using the UV package management system. (see: https://docs.astral.sh/uv/)
+Ensure all dependencies are installed by running `uv pip install -r requirements.txt` or by ensuring your `pyproject.toml` is up to date and then running `uv pip sync`.
+
+#### Dependencies
+The shell scripts `scripts/loadDirToTriplestore.sh` and `scripts/loadSitemapToTriplestore.sh` rely on the `jsonld` command-line tool for processing JSON-LD data. A common implementation is the Node.js `jsonld-cli` package.
+You can install it via npm:
+```bash
+npm install -g jsonld-cli
+```
+For more information, visit: [https://www.npmjs.com/package/jsonld-cli](https://www.npmjs.com/package/jsonld-cli)
+
+### Running Tests
+
+Unit tests are located in the `tests/` directory. To run the tests, navigate to the root of the repository and execute the following command:
+
+```bash
+python -m unittest discover -s tests
+```
+This command will discover and run all tests within the `tests` directory. Make sure all project dependencies, including any test-specific dependencies like `reportlab` (which should be listed in `requirements.txt` or `pyproject.toml`), are installed using `uv`.
 
 ### Notebook prototype
 
@@ -41,7 +59,7 @@ We can run these:
 ./scripts/github_jsonld_sitemap.py --output output/jldnew-sitemap.xml https://github.com/bio-xyz/BioAgents sampleJsonLdsNew 
 ```
 
-To load out JSON-LD now, we can use the sitemap to pull the resources directly from GitHub.
+To load out JSON-LD now, we can use the sitemap to pull the resources directly from GitHub. (Make sure you have `jsonld-cli` installed, see "Dependencies" section under "Setup").
 
 ```bash
 ./scripts/loadSitemapToTriplestore.sh ./output/jld-sitemap.xml http://homelab.lan:7878/store
@@ -96,6 +114,8 @@ Use the code bamlTest.py to use OpenAI (set the key with something like)
 export OPENAI_API_KEY="..."
 ```
 
+`bamlTest.py` is a utility script for sending a markdown file to BAML functions (`ExtractIdea` or `ExtractAssertion`) and saving the JSON output. It can be used for manual testing or exploration of these BAML functions.
+
 > Note: Since this is using [BAML](https://github.com/BoundaryML/baml) it's easy to 
 > modify [clients.baml](baml_src/clients.baml) and add in any client.  Ollama, for local,
 > Xai, Google Gemini, etc.  You will then need to modify the ``` client "openai/gpt-4o" ```
@@ -123,4 +143,3 @@ References:
 
 * BioAgent repo: https://github.com/bio-xyz/plugin-bioagent
 * DKG (origin trail): https://docs.origintrail.io/build-with-dkg/quickstart-test-drive-the-dkg-in-5-mins
-
