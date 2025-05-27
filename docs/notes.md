@@ -40,8 +40,16 @@ export OPENAI_API_KEY="..."
 Then run with
 
 ```bash
-python bamlTest.py --input input.md --output output.json
-```
+ python bamlTest.py --input secret/copernicus255.md --output secret/idea_copernicus255.json --mode idea
+ ```
+ for "ideas"
+
+```bash
+ python bamlTest.py --input secret/copernicus255.md --output secret/assertion_copernicus255.json --mode assertion
+ ```
+
+for "assertions"
+ 
 
 ### Future
 
