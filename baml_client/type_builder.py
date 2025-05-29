@@ -22,7 +22,7 @@ from .globals import DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIM
 class TypeBuilder(_TypeBuilder):
     def __init__(self):
         super().__init__(classes=set(
-          ["Assertion","Idea",]
+          ["Assertion","Idea","Nanograph","Nanopub",]
         ), enums=set(
           []
         ), runtime=DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIME)
@@ -35,6 +35,14 @@ class TypeBuilder(_TypeBuilder):
     @property
     def Idea(self) -> "IdeaAst":
         return IdeaAst(self)
+
+    @property
+    def Nanograph(self) -> "NanographAst":
+        return NanographAst(self)
+
+    @property
+    def Nanopub(self) -> "NanopubAst":
+        return NanopubAst(self)
 
 
 
@@ -153,6 +161,90 @@ class IdeaProperties:
     @property
     def references(self) -> ClassPropertyViewer:
         return ClassPropertyViewer(self.__bldr.property("references"))
+
+    
+
+class NanographAst:
+    def __init__(self, tb: _TypeBuilder):
+        _tb = tb._tb # type: ignore (we know how to use this private attribute)
+        self._bldr = _tb.class_("Nanograph")
+        self._properties: typing.Set[str] = set([ "triples", ])
+        self._props = NanographProperties(self._bldr, self._properties)
+
+    def type(self) -> FieldType:
+        return self._bldr.field()
+
+    @property
+    def props(self) -> "NanographProperties":
+        return self._props
+
+
+class NanographViewer(NanographAst):
+    def __init__(self, tb: _TypeBuilder):
+        super().__init__(tb)
+
+    
+    def list_properties(self) -> typing.List[typing.Tuple[str, ClassPropertyViewer]]:
+        return [(name, ClassPropertyViewer(self._bldr.property(name))) for name in self._properties]
+
+
+
+class NanographProperties:
+    def __init__(self, bldr: ClassBuilder, properties: typing.Set[str]):
+        self.__bldr = bldr
+        self.__properties = properties
+
+    
+
+    @property
+    def triples(self) -> ClassPropertyViewer:
+        return ClassPropertyViewer(self.__bldr.property("triples"))
+
+    
+
+class NanopubAst:
+    def __init__(self, tb: _TypeBuilder):
+        _tb = tb._tb # type: ignore (we know how to use this private attribute)
+        self._bldr = _tb.class_("Nanopub")
+        self._properties: typing.Set[str] = set([ "subject",  "predicate",  "object", ])
+        self._props = NanopubProperties(self._bldr, self._properties)
+
+    def type(self) -> FieldType:
+        return self._bldr.field()
+
+    @property
+    def props(self) -> "NanopubProperties":
+        return self._props
+
+
+class NanopubViewer(NanopubAst):
+    def __init__(self, tb: _TypeBuilder):
+        super().__init__(tb)
+
+    
+    def list_properties(self) -> typing.List[typing.Tuple[str, ClassPropertyViewer]]:
+        return [(name, ClassPropertyViewer(self._bldr.property(name))) for name in self._properties]
+
+
+
+class NanopubProperties:
+    def __init__(self, bldr: ClassBuilder, properties: typing.Set[str]):
+        self.__bldr = bldr
+        self.__properties = properties
+
+    
+
+    @property
+    def subject(self) -> ClassPropertyViewer:
+        return ClassPropertyViewer(self.__bldr.property("subject"))
+
+    @property
+    def predicate(self) -> ClassPropertyViewer:
+        return ClassPropertyViewer(self.__bldr.property("predicate"))
+
+    @property
+    def object(self) -> ClassPropertyViewer:
+        return ClassPropertyViewer(self.__bldr.property("object"))
 
     
 

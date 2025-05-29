@@ -55,3 +55,11 @@ class Idea(BaseModel):
     futureDirections: List[str]
     keyFindings: List[str]
     references: List[str]
+
+class Nanograph(BaseModel):
+    triples: List["Nanopub"]
+
+class Nanopub(BaseModel):
+    subject: str
+    predicate: str
+    object: str

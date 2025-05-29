@@ -12,6 +12,7 @@ dependencies = [
     "lancedb>=0.21.2",
     "networkx>=3.4.2",
     "pandas>=2.2.3",
+    "pandas-stubs==2.2.3.250527",
     "polars>=1.27.1",
     "pygithub>=2.6.1",
     "pygraphml>=2.4.2",

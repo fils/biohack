@@ -1,6 +1,7 @@
 from baml_client.sync_client import b
 from baml_client.types import Idea
 from baml_client.types import Assertion
+from baml_client.types import Nanograph
 
 import argparse
 import json
@@ -26,6 +27,10 @@ def workOnAssertion(mdtext: str) -> Assertion:
   response = b.ExtractAssertion(mdtext)
   return response
 
+def workOnNanograph(mdtext: str) -> Nanograph:
+  response = b.ExtractNanopubs(mdtext)
+  return response
+
 def main():
   # Set up command line argument parsing
   parser = argparse.ArgumentParser(description='Process markdown text and extract ideas or assertions.')
@@ -33,8 +38,8 @@ def main():
                      help='Input markdown file path')
   parser.add_argument('--output', '-o', required=True, 
                      help='Output file path for JSON results')
-  parser.add_argument('--mode', '-m', choices=['idea', 'assertion'], default='idea',
-                     help='Processing mode: "idea" for ExtractIdea or "assertion" for ExtractAssertion (default: idea)')
+  parser.add_argument('--mode', '-m', choices=['idea', 'assertion', 'nanograph'], default='idea',
+                     help='Processing mode: "idea" for ExtractIdea or "assertion" for ExtractAssertion or Nanograph for triples (default: idea)')
   
   args = parser.parse_args()
   
@@ -45,10 +50,13 @@ def main():
   # Choose the processing function based on the mode argument
   if args.mode == 'assertion':
     r = workOnAssertion(markdown)
+  elif args.mode == 'nanograph':
+    r = workOnNanograph(markdown)
+    # convert this to a dataframe with the columns: start end text label score
   else:  # Default to 'idea'
     r = workOnIdea(markdown)
   
-  # Save to output-file
+  # Save to an output-file
   try:
     with open(args.output, 'w') as outfile:
       outfile.write(r.model_dump_json(indent=2))

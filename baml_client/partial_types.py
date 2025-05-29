@@ -50,3 +50,11 @@ class Idea(BaseModel):
     futureDirections: List[str]
     keyFindings: List[str]
     references: List[str]
+
+class Nanograph(BaseModel):
+    triples: List["Nanopub"]
+
+class Nanopub(BaseModel):
+    subject: Optional[str] = None
+    predicate: Optional[str] = None
+    object: Optional[str] = None

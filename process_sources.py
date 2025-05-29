@@ -6,11 +6,13 @@ import pyarrow as pa
 import json
 from typing import List
 import pandas as pd
+from typing import Dict, List, Any
 
 from defs.etl_convert import convert_document
 from baml_client.sync_client import b
 from baml_client.types import Idea
 from baml_client.types import Assertion
+from baml_client.types import Nanograph
 from dataclasses import dataclass
 from defs import etl_gliner  # Add import for etl_gliner function
 
@@ -57,6 +59,18 @@ def generate_content_hash(content):
         str: MD5 hash of the content as a hexadecimal string
     """
     return hashlib.md5(content.encode('utf-8')).hexdigest()
+
+def workOnIdea(mdtext: str) -> Idea:
+  response = b.ExtractIdea(mdtext)
+  return response
+
+def workOnAssertion(mdtext: str) -> Assertion:
+  response = b.ExtractAssertion(mdtext)
+  return response
+
+def workOnNanograph(mdtext: str) -> Nanograph:
+  response = b.ExtractNanopubs(mdtext)
+  return response
 
 def process_sources():
     # Read the sourcelist.yaml file
@@ -116,13 +130,7 @@ def process_sources():
         else:
             print(f"Failed to process {source_name}")
 
-def workOnIdea(mdtext: str) -> Idea:
-  response = b.ExtractIdea(mdtext)
-  return response
 
-def workOnAssertion(mdtext: str) -> Assertion:
-  response = b.ExtractAssertion(mdtext)
-  return response
 
 def process_claims():
     db = lancedb.connect("./lancedb")
@@ -254,7 +262,86 @@ def process_entities():
         print("Final DataFrame is empty. 'entities' table not created.")
 
 
+def triples_to_dataframe(data: Dict[str, List[Dict[str, str]]]) -> pd.DataFrame:
+    # Convert Pydantic model to dict using model_dump_json
+    data_dict = json.loads(data.model_dump_json())
+
+    # Extract the triples list from the data dictionary
+    triples = data_dict.get('triples', [])
+
+    # Create a DataFrame from the list of triples
+    df = pd.DataFrame(triples)
+
+    return df
+
+
+def process_nanopubs():
+    db = lancedb.connect("./lancedb")
+
+    if "nanopubs" not in db.table_names():
+        print("nanopubs table not found!")
+        return
+
+    table = db.open_table("claims")  # pull the claims to process the nanopubs
+    records = table.to_pandas()
+    print(f"Total records in claims: {len(records)}")
+
+    all_entities_dfs = []  # Initialize a list to store individual DataFrames
+
+    # didn't use this lambda...  it would need to model_dump_json if I did
+    # triples_to_df = lambda data: pd.DataFrame(data.get('triples', []))
+
+    for i, record in records.iterrows():
+        try:
+            r = workOnNanograph(str(record['text']))
+            df = triples_to_dataframe(r)
+
+            if not df.empty: # Proceed only if etl_gliner found entities
+                df['filename'] = record['filename']
+                df['nodename'] = record['node_name'] # Corrected from node_name to nodename to match user's request
+                df['index'] = record['index'] # Corrected from index to idex
+                all_entities_dfs.append(df)
+            # else:
+            #     print(f"No entities found for text in {record['filename']}, node {record['node_name']}, index {record['index']}")
+        except Exception as e:
+            # This will catch BamlValidationError and any other exceptions
+            print(f"Error processing record {i} from {record['filename']}: {type(e).__name__}: {str(e)}")
+            continue
+
+    final_df = pd.concat(all_entities_dfs, ignore_index=True)
+    print(f"Total entities processed: {len(final_df)}")
+
+    # Dynamically create schema from the final_df
+    if not final_df.empty:
+        pa_fields = []
+        for column_name, dtype in final_df.dtypes.items():
+            if pd.api.types.is_integer_dtype(dtype):
+                pa_fields.append(pa.field(column_name, pa.int64()))  # or pa.int32() if appropriate
+            elif pd.api.types.is_float_dtype(dtype):
+                pa_fields.append(pa.field(column_name, pa.float64()))
+            elif pd.api.types.is_bool_dtype(dtype):
+                pa_fields.append(pa.field(column_name, pa.bool_()))
+            else:  # Default to string for object types or other unhandled types
+                pa_fields.append(pa.field(column_name, pa.string()))
+
+        nanopubs_schema = pa.schema(pa_fields)
+
+        # Create or recreate the entity table
+        if "nanopubs" in db.table_names():
+            db.drop_table("nanopubs")
+
+        entities_table = db.create_table("nanopubs", schema=nanopubs_schema)
+        print(entities_table.schema)
+
+        # Add data to the "entities" table
+        entities_table.add(final_df)
+        print(f"Successfully created 'nanopubs' table and added {len(final_df)} records.")
+    else:
+        print("Final DataFrame is empty. 'nanopubs' table not created.")
+
+
 if __name__ == "__main__":
-    # process_sources()
-    # process_claims()
+    process_sources()
+    process_claims()
     process_entities()
+    process_nanopubs()
