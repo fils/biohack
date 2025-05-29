@@ -341,7 +341,7 @@ def process_nanopubs():
 
 
 if __name__ == "__main__":
-    process_sources()
-    process_claims()
-    process_entities()
+    # process_sources()
+    # process_claims()
+    # process_entities()
     process_nanopubs()

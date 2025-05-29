@@ -24,7 +24,7 @@ class TypeBuilder(_TypeBuilder):
         super().__init__(classes=set(
           ["Assertion","Idea","Nanograph","Nanopub",]
         ), enums=set(
-          []
+          ["NanoPred","NanoPred2",]
         ), runtime=DO_NOT_USE_DIRECTLY_UNLESS_YOU_KNOW_WHAT_YOURE_DOING_RUNTIME)
 
 
@@ -249,6 +249,370 @@ class NanopubProperties:
     
 
 
+
+class NanoPredAst:
+    def __init__(self, tb: _TypeBuilder):
+        _tb = tb._tb # type: ignore (we know how to use this private attribute)
+        self._bldr = _tb.enum("NanoPred")
+        self._values: typing.Set[str] = set([ "HAS_DIGITAL_OBJECT_TYPE",  "HAS_MEDIA_TYPE",  "HAS_ACCESS_URI",  "HAS_PUBLISHER",  "HAS_PUBLICATION_DATE",  "HAS_VERSION",  "USES_FIP",  "HAS_LICENSE",  "HAS_LANGUAGE",  "HAS_DOMAIN",  "HAS_TITLE",  "HAS_DESCRIPTION",  "HAS_FUNDER",  "HAS_PROJECT_ID",  "CREATOR",  "CONTRIBUTOR",  "HAS_CONTACT_POINT",  "HAS_WEBSITE",  "HAS_START_DATE",  "HAS_END_DATE",  "IS_PART_OF",  "IS_IN_RESPONSE_TO",  "HAS_PROJECT_PRE_REGISTRATION",  "HAS_PROJECT_PROPOSAL",  "HAS_MEMBERS",  "HAD_BUDGET",  "HAS_ETHICS_CLEARANCE",  "HAS_CONSORTIUM_AGREEMENT",  "IS_OUTPUT_OF_PROJECT",  "HAS_BEEN_REPOSED",  "HAS_REPOSITORY_PID",  "GENERATED_FROM_SAMPLE",  "HAS_DATASET",  "HAS_METHOD",  "HAS_IMAGE",  "HAS_CODE",  "HAS_DMP", ])
+        self._vals = NanoPredValues(self._bldr, self._values)
+
+    def type(self) -> FieldType:
+        return self._bldr.field()
+
+    @property
+    def values(self) -> "NanoPredValues":
+        return self._vals
+
+
+class NanoPredViewer(NanoPredAst):
+    def __init__(self, tb: _TypeBuilder):
+        super().__init__(tb)
+
+    def list_values(self) -> typing.List[typing.Tuple[str, EnumValueViewer]]:
+        return [(name, EnumValueViewer(self._bldr.value(name))) for name in self._values]
+
+
+class NanoPredValues:
+    def __init__(self, enum_bldr: EnumBuilder, values: typing.Set[str]):
+        self.__bldr = enum_bldr
+        self.__values = values
+
+    
+
+    @property
+    def HAS_DIGITAL_OBJECT_TYPE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_DIGITAL_OBJECT_TYPE"))
+    
+
+    @property
+    def HAS_MEDIA_TYPE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_MEDIA_TYPE"))
+    
+
+    @property
+    def HAS_ACCESS_URI(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_ACCESS_URI"))
+    
+
+    @property
+    def HAS_PUBLISHER(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_PUBLISHER"))
+    
+
+    @property
+    def HAS_PUBLICATION_DATE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_PUBLICATION_DATE"))
+    
+
+    @property
+    def HAS_VERSION(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_VERSION"))
+    
+
+    @property
+    def USES_FIP(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("USES_FIP"))
+    
+
+    @property
+    def HAS_LICENSE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_LICENSE"))
+    
+
+    @property
+    def HAS_LANGUAGE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_LANGUAGE"))
+    
+
+    @property
+    def HAS_DOMAIN(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_DOMAIN"))
+    
+
+    @property
+    def HAS_TITLE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_TITLE"))
+    
+
+    @property
+    def HAS_DESCRIPTION(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_DESCRIPTION"))
+    
+
+    @property
+    def HAS_FUNDER(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_FUNDER"))
+    
+
+    @property
+    def HAS_PROJECT_ID(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_PROJECT_ID"))
+    
+
+    @property
+    def CREATOR(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("CREATOR"))
+    
+
+    @property
+    def CONTRIBUTOR(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("CONTRIBUTOR"))
+    
+
+    @property
+    def HAS_CONTACT_POINT(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_CONTACT_POINT"))
+    
+
+    @property
+    def HAS_WEBSITE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_WEBSITE"))
+    
+
+    @property
+    def HAS_START_DATE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_START_DATE"))
+    
+
+    @property
+    def HAS_END_DATE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_END_DATE"))
+    
+
+    @property
+    def IS_PART_OF(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("IS_PART_OF"))
+    
+
+    @property
+    def IS_IN_RESPONSE_TO(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("IS_IN_RESPONSE_TO"))
+    
+
+    @property
+    def HAS_PROJECT_PRE_REGISTRATION(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_PROJECT_PRE_REGISTRATION"))
+    
+
+    @property
+    def HAS_PROJECT_PROPOSAL(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_PROJECT_PROPOSAL"))
+    
+
+    @property
+    def HAS_MEMBERS(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_MEMBERS"))
+    
+
+    @property
+    def HAD_BUDGET(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAD_BUDGET"))
+    
+
+    @property
+    def HAS_ETHICS_CLEARANCE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_ETHICS_CLEARANCE"))
+    
+
+    @property
+    def HAS_CONSORTIUM_AGREEMENT(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_CONSORTIUM_AGREEMENT"))
+    
+
+    @property
+    def IS_OUTPUT_OF_PROJECT(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("IS_OUTPUT_OF_PROJECT"))
+    
+
+    @property
+    def HAS_BEEN_REPOSED(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_BEEN_REPOSED"))
+    
+
+    @property
+    def HAS_REPOSITORY_PID(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_REPOSITORY_PID"))
+    
+
+    @property
+    def GENERATED_FROM_SAMPLE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("GENERATED_FROM_SAMPLE"))
+    
+
+    @property
+    def HAS_DATASET(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_DATASET"))
+    
+
+    @property
+    def HAS_METHOD(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_METHOD"))
+    
+
+    @property
+    def HAS_IMAGE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_IMAGE"))
+    
+
+    @property
+    def HAS_CODE(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_CODE"))
+    
+
+    @property
+    def HAS_DMP(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HAS_DMP"))
+    
+
+    
+
+class NanoPred2Ast:
+    def __init__(self, tb: _TypeBuilder):
+        _tb = tb._tb # type: ignore (we know how to use this private attribute)
+        self._bldr = _tb.enum("NanoPred2")
+        self._values: typing.Set[str] = set([ "Predict",  "Classify",  "Enhance",  "Suggest",  "Reveal",  "Support",  "AreBecoming",  "AreNotMakingAsManyConnectionsAsExpected",  "ArePotentiallyBasedOn",  "AreTrainedWith",  "CanReliablyCharacterize",  "DemonstratedAnIncreaseInPredictionAccuracyTo",  "Determines",  "FaceChallengesWhenGeneralizedTo",  "HasPlasmaCharacteristicsSimilarTo",  "HasPredictionAccuracyOf",  "HaveSparkedInterestIn",  "IllustratesShortcomingsIn",  "IsDecreasing",  "IsIdentified",  "IsUsedFor",  "IsUsedToSimulate",  "Used", ])
+        self._vals = NanoPred2Values(self._bldr, self._values)
+
+    def type(self) -> FieldType:
+        return self._bldr.field()
+
+    @property
+    def values(self) -> "NanoPred2Values":
+        return self._vals
+
+
+class NanoPred2Viewer(NanoPred2Ast):
+    def __init__(self, tb: _TypeBuilder):
+        super().__init__(tb)
+
+    def list_values(self) -> typing.List[typing.Tuple[str, EnumValueViewer]]:
+        return [(name, EnumValueViewer(self._bldr.value(name))) for name in self._values]
+
+
+class NanoPred2Values:
+    def __init__(self, enum_bldr: EnumBuilder, values: typing.Set[str]):
+        self.__bldr = enum_bldr
+        self.__values = values
+
+    
+
+    @property
+    def Predict(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("Predict"))
+    
+
+    @property
+    def Classify(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("Classify"))
+    
+
+    @property
+    def Enhance(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("Enhance"))
+    
+
+    @property
+    def Suggest(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("Suggest"))
+    
+
+    @property
+    def Reveal(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("Reveal"))
+    
+
+    @property
+    def Support(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("Support"))
+    
+
+    @property
+    def AreBecoming(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("AreBecoming"))
+    
+
+    @property
+    def AreNotMakingAsManyConnectionsAsExpected(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("AreNotMakingAsManyConnectionsAsExpected"))
+    
+
+    @property
+    def ArePotentiallyBasedOn(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("ArePotentiallyBasedOn"))
+    
+
+    @property
+    def AreTrainedWith(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("AreTrainedWith"))
+    
+
+    @property
+    def CanReliablyCharacterize(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("CanReliablyCharacterize"))
+    
+
+    @property
+    def DemonstratedAnIncreaseInPredictionAccuracyTo(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("DemonstratedAnIncreaseInPredictionAccuracyTo"))
+    
+
+    @property
+    def Determines(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("Determines"))
+    
+
+    @property
+    def FaceChallengesWhenGeneralizedTo(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("FaceChallengesWhenGeneralizedTo"))
+    
+
+    @property
+    def HasPlasmaCharacteristicsSimilarTo(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HasPlasmaCharacteristicsSimilarTo"))
+    
+
+    @property
+    def HasPredictionAccuracyOf(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HasPredictionAccuracyOf"))
+    
+
+    @property
+    def HaveSparkedInterestIn(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("HaveSparkedInterestIn"))
+    
+
+    @property
+    def IllustratesShortcomingsIn(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("IllustratesShortcomingsIn"))
+    
+
+    @property
+    def IsDecreasing(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("IsDecreasing"))
+    
+
+    @property
+    def IsIdentified(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("IsIdentified"))
+    
+
+    @property
+    def IsUsedFor(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("IsUsedFor"))
+    
+
+    @property
+    def IsUsedToSimulate(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("IsUsedToSimulate"))
+    
+
+    @property
+    def Used(self) -> EnumValueViewer:
+        return EnumValueViewer(self.__bldr.value("Used"))
+    
+
+    
 
 
 __all__ = ["TypeBuilder"]

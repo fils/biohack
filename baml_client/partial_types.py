@@ -56,5 +56,5 @@ class Nanograph(BaseModel):
 
 class Nanopub(BaseModel):
     subject: Optional[str] = None
-    predicate: Optional[str] = None
+    predicate: Optional[types.NanoPred2] = None
     object: Optional[str] = None
