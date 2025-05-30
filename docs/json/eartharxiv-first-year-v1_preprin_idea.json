@@ -1,0 +1,39 @@
+{
+  "hypothesis": [
+    "This study aims to determine the impact of preprints and EarthArXiv on the speed of academic work dissemination and openness in the Earth sciences community."
+  ],
+  "supportingArguments": [
+    "Preprints increase accessibility and speed up the reuse of academic work, as evidenced by rapid citations and social media discussions.",
+    "In its first year, EarthArXiv accepted ~500 submissions with total ~60,000 downloads, indicating a move towards openness in Earth sciences."
+  ],
+  "researchOpportunities": [
+    "Future studies could explore the impact of preprints on underrepresented sub-disciplines and how they could encourage broader participation."
+  ],
+  "methodology": [
+    "EarthArXiv uses a moderation policy to screen submissions for scholarly content. Submitted preprints are assigned a DOI for tracking and citability. Manuscripts can be tagged by discipline and linked with peer-reviewed DOIs."
+  ],
+  "results": [
+    "EarthArXiv currently hosts over 500 submissions, with 235 having a second DOI indicating peer-reviewed publication. The platform averages 10 new submissions per week and 2763 monthly downloads."
+  ],
+  "conclusions": [
+    "The increasing submission rate and engagement with EarthArXiv highlight an embrace of preprints by the Earth science community, suggesting a shift towards open access dissemination."
+  ],
+  "limitations": [
+    "A limitation of this study is the potential underestimation of non-peer-reviewed manuscripts as not all authors report subsequent journal-assigned DOIs."
+  ],
+  "futureDirections": [
+    "Future work should investigate how to increase representation of underrepresented sub-disciplines on EarthArXiv and promote the citation of preprints."
+  ],
+  "keyFindings": [
+    "EarthArXiv's rapid growth and substantial download statistics demonstrate that the Earth science community is actively participating in preprint dissemination and open access."
+  ],
+  "references": [
+    "Shuai, X., Pepe, A., and Bollen, J., (2012). PLOS, November 1, 2012. https://doi.org/10.1371/journal.pone.0047523",
+    "Gentil-Beccot, A., Mele, S., and Brooks, T., (2009). ArXiv, November, 2009. https://arxiv.org/abs/0906.5418",
+    "Johansson MA, Reich NG, Meyers LA, Lipsitch M (2018). PLoS Med 15(4): e1002549. https://doi.org/10.1371/journal.pmed.1002549",
+    "McKiernan E, et al. 2016. eLife 5:e16800. https://doi.org/10.7554/eLife.16800.001",
+    "Narock, T. (2018a). Zenodo. http://doi.org/10.5281/zenodo.1467250",
+    "Piwowar H, et al. (2018) PeerJ 6:e4375. https://doi.org/10.7717/peerj.4375",
+    "Tennant, J. P., et al. 2016. F1000Res. doi: 10.12688/f1000research.8460.3"
+  ]
+}

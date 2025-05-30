@@ -1,0 +1,16 @@
+{
+  "Cardinal": [
+    "Our work demonstrates how probabilistic neural networks can enhance the classification by including a measure of prediction uncertainty.",
+    "Our work also provides a ranking of the parameters that lead to an improved classification scheme with ∼96% accuracy.",
+    "The contribution of more plasma parameters - namely plasma β and Ptot - increase the accuracy from ∼88% (in the case of 3PNN) to ∼96% (in the case of 8PNN).",
+    "We find that a two step approach of first distinguishing ICMEs (a combined group of MO and SH) and then classifying ICME into MO and SH is more practically effective.",
+    "Our approach has the potential to be implemented on real-time solar wind data and support space weather now-casting and forecasting operations."
+  ],
+  "Supporting": [
+    "We used neural networks trained with different solar wind magnetic and plasma characteristics to automatically classify the solar wind.",
+    "We used one minute resolution solar wind magnetic field and plasma data observed in situ by the Magnetic Field Instrument (MFI) and the Solar Wind Experiment (SWE) onboard the Wind spacecraft.",
+    "Data are then randomly split with the standard 80% for training the neural networks and the remaining 20% used for evaluating the trained networks.",
+    "Placing a probability distribution over the NN output layer is method of capturing aleatoric uncertainty, which is uncertainty inherent in the observations.",
+    "We normalize our data using minimum and maximum values from the entire dataset."
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "Cardinal": [
+    "Our study demonstrates how a community sensor network from the Baltimore Social-Environmental Collaborative (BSEC) can be paired with advances in machine learning to provide near real-time predictions of UHIs with uncertainty estimates.",
+    "We demonstrate how uncertainty quantification can be incorporated into UHI prediction using Bayesian neural networks that enable LST predictions with uncertainty estimates for Baltimore, Maryland during summer 2023.",
+    "We show how capturing different types of uncertainty are informative for future smart city planning.",
+    "Our approach leverages community weather stations and is able to predict land surface temperature with a mean absolute error of 1.21 degrees while also providing uncertainty intervals."
+  ],
+  "Supporting": [
+    "LST is typically measured using satellite imagery, which can capture the thermal radiation emitted from the land surface. Unlike air temperature, LST varies significantly depending on the type of surface (grass, concrete, water) being observed.",
+    "Surface Urban Heat Islands are typically found using remote sensing data. Satellite measures and used to calculate land surface temperature (LST).",
+    "We demonstrate in this study how a community network of weather stations from the Baltimore Social-Environmental Collaborative (BSEC) can be paired with advances in machine learning to provide near real-time predictions of LST with uncertainty estimates.",
+    "While prior research has investigated the use of neural networks in UHI assessment, those efforts did not include uncertainty quantification.",
+    "We demonstrate how Bayesian statistical approaches can be incorporated into neural networks enabling LST predictions with uncertainty estimates for Baltimore, Maryland during summer 2023.",
+    "Our BNN consists of 4 layers: an input layer, two hidden layers, and an output layer. The input layer takes the 7 principal components from PCA analysis.",
+    "The BSEC has 23 weather stations deployed around Baltimore that captures various parameters essential for the prediction model.",
+    "Traditional neural networks optimize a loss function, typically through gradient descent, to obtain optimal weight values, which work as a function approximator mapping input feature values to output predictions.",
+    "A BNN, by contrast, does not seek fixed model parameters. In a BNN the network weights and output predictions are all probability distributions. Passing the same input through the trained network will result in different predictions as different weights are sampled from the distributions on each pass."
+  ]
+}

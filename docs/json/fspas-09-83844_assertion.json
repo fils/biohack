@@ -1,0 +1,18 @@
+{
+  "Cardinal": [
+    "We explore a convolutional neural network's (CNN) ability to predict the embedded magnetic flux rope's orientation once it has been identified from in situ solar wind observations.",
+    "This work is an attempt to understand if a neural network can predict a flux rope's orientation having only seen a portion of the event, providing advanced warning of impending geomagnetic disturbance.",
+    "In these idealized, synthetic, circular-cylindrical flux ropes even the poorest performing network is able to predict orientation angles with a median error under 8° after only observing 10% of a simulated spacecraft crossing.",
+    "Our experiments have demonstrated that convolutional neural networks are capable of providing extremely reliable characterizations of flux ropes from synthetic data.",
+    "Neural networks trained on synthetic events do not transfer perfectly to Wind spacecraft data due to incorrect physical models and internal physical processes.",
+    "The neural network trained only on full duration synthetic flux ropes can provide reliable predictions in a number of Wind events and suggests better fittings for some."
+  ],
+  "Supporting": [
+    "Our work uses CNNs trained with magnetic field vectors from analytical flux rope data.",
+    "Various physics-based flux rope models exist that can be used to reconstruct the internal ICME magnetic configuration and provide information on orientation, geometry, and other magnetic parameters.",
+    "Nguyen et al. (2018) have explored machine learning techniques for automated identification of ICMEs and dos Santos et al. (2020) used a deep neural network to create a binary classifier for flux ropes in the solar wind.",
+    "The CNN is the basis of the neural network architectures explored in this work. The training phase consists of showing the network the input-output pairs of simulated flux rope magnetic field vectors and the corresponding key parameters used to create this simulated data trace.",
+    "We use the Magnetic Field Instrument (MFI) and Solar Wind Experiment (SWE) data from the Wind spacecraft to evaluate the trained CNNs on flux ropes.",
+    "A set of exploratory experiments quantified the capabilities of different CNN architectures and determined the accuracy of predicting flux rope orientation from both full and partial magnetic field profiles."
+  ]
+}

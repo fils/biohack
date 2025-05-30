@@ -1,0 +1,41 @@
+{
+  "hypothesis": [
+    "Our study demonstrates how a community sensor network from the Baltimore Social-Environmental Collaborative (BSEC) can be paired with advances in machine learning to provide near real-time predictions of UHIs with uncertainty estimates."
+  ],
+  "supportingArguments": [
+    "While prior research has investigated the use of neural networks in UHI assessment, those efforts did not include uncertainty quantification. We demonstrate how uncertainty quantification can be incorporated into UHI prediction in Baltimore, Maryland.",
+    "We compare the neural network predictions to ground-truth values of LST from the Landsat 9 spacecraft."
+  ],
+  "researchOpportunities": [
+    "Future research will incorporate a broader context of nearby morphology and validate our methods in other cities where LST ground truth is available at different times of day and in different urban morphologies."
+  ],
+  "methodology": [
+    "The Baltimore Social-Environmental Collaborative contributes to climate action plans for Baltimore by deploying sensors in local communities.",
+    "BSEC had 23 weather stations deployed, and we used data from these stations in coordination with Landsat 9 data.",
+    "The study applies Bayesian Neural Networks using community weather stations to predict Land Surface Temperature (LST) with uncertainty estimates."
+  ],
+  "results": [
+    "We obtained a mean absolute error (MAE) of 1.21 degrees.",
+    "High aleatoric uncertainty was found in the downtown harbor area, likely due to complex urban morphology."
+  ],
+  "conclusions": [
+    "Our approach leverages community weather stations and is able to predict land surface temperature with a mean absolute error of 1.21 degrees while also providing uncertainty intervals.",
+    "Capturing different types of uncertainty is informative for future smart city planning as it helps determine the location of future sensors and enables the flagging of extreme weather events."
+  ],
+  "limitations": [
+    "Local LST is influenced by building density, adjacent land use types, and proximity to water and green spaces. Our neural network utilizes urban morphology at the location of the prediction only.",
+    "Our study took place during summer and did not include any days with precipitation."
+  ],
+  "futureDirections": [
+    "Our work shows how capturing different types of uncertainty is informative for future smart city planning as it helps determine the location of future sensors and enables the flagging of extreme weather events."
+  ],
+  "keyFindings": [
+    "We have demonstrated how advances in neural network uncertainty quantification can be incorporated into UHI prediction.",
+    "High aleatoric uncertainty in certain areas indicates natural variability rather than model doubt."
+  ],
+  "references": [
+    "Avdan, U. and Jovanovska, G., 2016. Algorithm for Automated Mapping of Land Surface Temperature Using LANDSAT 8 Satellite Data.",
+    "Assaf, G., Rayan, X.I., and Assaad, H., (2023a), Predicting Urban Heat Island severity.",
+    "Seitzer, M., Tavakoli, A., Antic, D., & Martius, G. (2022). On the Pitfalls of Heteroscedastic Uncertainty Estimation with Probabilistic Neural Networks."
+  ]
+}

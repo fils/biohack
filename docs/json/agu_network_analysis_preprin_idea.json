@@ -1,0 +1,40 @@
+{
+  "hypothesis": [
+    "We are interested in how science collaboration and networking are taking place and how the procedures of the AGU Fall meeting could be enhanced to facilitate better scientific communication and collaboration."
+  ],
+  "supportingArguments": [
+    "We apply network analysis and scientometrics to seventeen years of AGU Fall Meetings, modeling them as graphs where presentation co-authors are connected nodes.",
+    "The study includes the analysis of seventeen years of data and covers various sub-disciplines within Earth and space science at AGU."
+  ],
+  "researchOpportunities": [],
+  "methodology": [
+    "Data were retrieved by querying the AGU Abstract Browser’s Linked Open Data interface.",
+    "The authors model each AGU section as an undirected network based on co-authorship.",
+    "The analysis involves computing network density and connected components across the various sections of AGU Fall Meetings."
+  ],
+  "results": [
+    "Network density decreases for all sections, suggesting that nodes are being added faster than edges.",
+    "A large number of connected components was found, indicating fragmentation within the networks of co-authors in each section.",
+    "An analysis of multi-disciplinary authorship is conducted, showing significant cross-disciplinary collaborations."
+  ],
+  "conclusions": [
+    "The number and fragmentation of network components highlight the need for better connectivity between clusters, which can improve scientific collaboration and communication."
+  ],
+  "limitations": [
+    "The difficulty in disambiguating authors due to variations in naming conventions and affiliations, which affects the accuracy of the network graphs.",
+    "Inherent uncertainty exists in the results due to potential multiple nodes representing the same person."
+  ],
+  "futureDirections": [
+    "Optimizing meeting space at AGU Fall Meetings using the network and keyword data to place related sections next to each other.",
+    "Developing tools and apps that utilize meeting data to guide attendees in exploring network connections."
+  ],
+  "keyFindings": [
+    "Network density is decreasing over time, indicating that new attendees are not forming connections at the same rate.",
+    "There is a significant amount of fragmentation in the networks, with many single node components representing isolated researchers."
+  ],
+  "references": [
+    "Berners-Lee, T. (2006). Linked Data - Design Issues.",
+    "Burt, R. S. (2004). Structural Holes and Good Ideas.",
+    "Narock, T., Krisnadhi, A., Hitzler, P., Cheatham, M., Arko, R., Carbotte, S., Shepherd, A., Chandler, C., Raymond, L., Wiebe, P. & Finin, T. (2014). The OceanLink Project."
+  ]
+}

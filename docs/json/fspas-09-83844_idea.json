@@ -1,0 +1,43 @@
+{
+  "hypothesis": [
+    "This study aims to assess a neural network’s ability to predict a flux rope's orientation after an ICME is identified."
+  ],
+  "supportingArguments": [
+    "Our work uses CNNs trained with magnetic field vectors from analytical flux rope data.",
+    "The process of casting the physics problem as a machine learning problem is discussed as well as the impacts of different factors on prediction accuracy such as flux rope fluctuations and different neural network topologies."
+  ],
+  "researchOpportunities": [
+    "An increase of space- and ground-based data availability has led to more interest in applications of machine learning within the space weather community.",
+    "It remains for future research to conduct a more in-depth analysis into how to combat prediction errors due to multiple inputs sharing the same output.",
+    "Future research will examine where the network is focusing its attention and if this can be exploited for more accurate predictions earlier in the forecasting process."
+  ],
+  "methodology": [
+    "We use a physics-based flux rope model to produce a synthetic training dataset.",
+    "The CNN is the basis of the neural network architectures explored in this work.",
+    "Convolutional Neural Networks (CNN) were trained with simulated data derived from a flux rope model and tested using observed ICME data from the Wind spacecraft."
+  ],
+  "results": [
+    "The 1D CNN shows the least skewness and the lowest median difference values across the parameters.",
+    "All three architectures predict key parameters of a flux rope which correlate well with the input data; however, the best performing is the 1D network that feeds on time series data."
+  ],
+  "conclusions": [
+    "Our experiments have demonstrated that convolutional neural networks are capable of providing extremely reliable characterizations of flux ropes from synthetic data.",
+    "The neural networks have helped highlight the limitations of the physics-based model and even suggested better fittings of some Wind flux ropes."
+  ],
+  "limitations": [
+    "A major challenge to developing such a forecasting system is that information about the internal magnetic structure of ICMEs is often limited to 1D observations of a single spacecraft crossing the structure.",
+    "The introduction of partial flux ropes into the training produces more errors because multiple inputs now produce the same output.",
+    "Neural networks trained on synthetic events do not transfer perfectly to Wind, indicating limitations arising from training with synthetic data."
+  ],
+  "futureDirections": [
+    "Future work will include implementing a single, physics-based loss function into the CNN to replace the four separate loss functions.",
+    "Identify and implement enhancements to analytical flux rope models to produce training data that includes more realistic turbulence and asymmetry."
+  ],
+  "keyFindings": [
+    "The 1D CNN applied to the time series outperforms the 2D CNNs, giving more accurate predictions across all four output parameters.",
+    "Applying the 1D CNN trained only on full duration synthetic flux ropes to in situ Wind events shows that the network gives reliable predictions in a number of events and exhibits a distribution of average correlations that is qualitatively similar to those from the human expert."
+  ],
+  "references": [
+    "[Baker, D. N., and Lanzerotti, L. J. (2008). A Continuous L1 Presence Required for Space Weather., Burlaga, L. F. (1988). Period Doubling in the Outer Heliosphere. J. Geophys. Res., Kilpua, E., Koskinen, H. E. J., and Pulkkinen, T. I. (2017). Coronal Mass Ejections and Their Sheath Regions in Interplanetary Space. Living Rev. Sol. Phys.]"
+  ]
+}

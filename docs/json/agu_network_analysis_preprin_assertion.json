@@ -1,0 +1,17 @@
+{
+  "Cardinal": [
+    "This study demonstrates that network density decreases over time across all AGU sections, indicating that the rate at which new researchers attend AGU sessions is greater than the rate at which existing researchers form new collaborations.",
+    "Analysis of connected components within AGU section graphs shows significant fragmentation, suggesting that new discussions at AGU meetings are not translating into long-term collaborations across different research clusters.",
+    "The use of keywords indicates emerging collaborations and new scientific trends, such as the sudden rise in the Natural Hazards section's usage of Informatics-themed keywords between 2016 and 2017.",
+    "GeoLink and similar initiatives show the potential of connecting different open data networks to enhance scientific collaboration and funding transparency, as evidenced by linking AGU data with the National Science Foundation to identify where AGU presenters receive their funding."
+  ],
+  "Supporting": [
+    "Using network analysis on data from the AGU Abstract Browser spanning 17 years of Fall Meetings (2000-2017), each AGU section was modeled as an undirected network based on co-authorship.",
+    "Network density was computed for each section per year, and percentage changes in network density were analyzed.",
+    "The data in this study was retrieved by programmatically querying the AGU Abstract Browser’s Linked Open Data interface, which utilizes Semantic Web technologies.",
+    "The study accounted for multi-disciplinary authors by identifying unique authors present in more than one AGU section over the 17-year dataset.",
+    "Trends in keyword usage were analyzed using counts of abstracts tagged with AGU's keyword hierarchy across the dataset, highlighting emerging collaborations and scientific directions.",
+    "Tables and figures illustrate network metrics like network density, connected components, and multi-disciplinary authors to show trends in researcher collaboration over time.",
+    "The research utilized open-source software, publicly available at https://github.com/narock/agu_analytics, to conduct the network analysis and generate graph data."
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "Cardinal": [
+    "This study demonstrates that convolutional neural networks (CNNs) are capable of providing extremely reliable characterizations of flux ropes from synthetic data, successfully inferring large scale, 3D information from single-point measurements.",
+    "We extend the capabilities presented in Reiss by reconstructing the entire three-dimensional magnetic field profile.",
+    "The process of casting the physics problem as a machine learning problem is discussed as well as the impacts of different factors on prediction accuracy such as flux rope fluctuations and different neural network topologies.",
+    "The task of predicting a flux rope’s key defining parameters from magnetic field measurements can be cast as a supervised machine learning problem.",
+    "A trained network can use the structure of simulated magnetic field vectors to learn filters that map to accurate flux rope key parameter predictions.",
+    "The 1D convolutional neural network (CNN), which is applied to the time series directly, gives more accurate predictions across all four output parameters than 2D CNNs used in the study.",
+    "The neural networks have helped highlight the limitations of the physics-based model and even suggested better fittings of some Wind flux ropes."
+  ],
+  "Supporting": [
+    "Our work uses CNNs trained with magnetic field vectors from analytical flux rope data. The simulated flux ropes span many possible spacecraft trajectories and flux rope orientations.",
+    "Respective to Nguyen et al., machine learning techniques were explored for automated identification of ICMEs and dos Santos used a deep neural network to create a binary classifier for flux ropes in the solar wind.",
+    "As machine learning is relatively new to space weather, the accuracy of these forecasts, and more generally, which neural network topologies to utilize, are unclear.",
+    "The N-C model was used to simulate the magnetic field signature of flux ropes at numerous orientations and spacecraft trajectories, taking as input parameters such as chirality, impact parameter, longitude, latitude, radius, bulk velocity, and force free structure.",
+    "The synthetic data set was generated based on this model with variables like solar wind speed, size, and orientation, allowing for consistency in CNN training input size.",
+    "Over ninety percent of testing events have an average correlation coefficient above 0.75 as long as the training set size is over 200 events.",
+    "The circular-cylindrical flux rope model of Nieves-Chinchilla et al. was used, which describes a 'typical' flux rope observed at Earth."
+  ]
+}
