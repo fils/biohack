@@ -7,13 +7,14 @@ import requests
 
 import asyncio
 from crawl4ai import *
+import logging
 
+logger = logging.getLogger(__name__)
 
 async def fetch_resources(source):
     async with AsyncWebCrawler() as crawler:
         result = await crawler.arun(
-            # url="https://www.waterqualitydata.us"
-            url="https://www.hydrosheds.org/hydrosheds-core-downloads",
+            url=source,
         )
 
-    print(result.markdown)
+    logger.info(result.markdown)

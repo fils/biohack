@@ -1,5 +1,6 @@
 import requests
 import os
+import logging
 import tempfile
 from urllib.parse import urlparse
 
@@ -10,9 +11,10 @@ try:
     import html2text
     import PyPDF2
 except ImportError:
-    print("Required libraries not found. Please install them using:")
-    print("pip install html2text PyPDF2")
+    logger.exception("Failed to import html2text or PyPDF2. Please install them using: pip install html2text PyPDF2")
     exit(1)
+
+logger = logging.getLogger(__name__)
 
 def is_url(path):
     """Check if the given path is a URL."""
@@ -48,7 +50,7 @@ def download_file(url):
         temp_file.close()
         return temp_file_path
     except Exception as e:
-        print(f"Error downloading file: {e}")
+        logger.exception(f"Error downloading file: {e}")
         return None
 
 def html_to_markdown(html_content):
@@ -79,7 +81,7 @@ def pdf_to_markdown(pdf_path):
         
         return markdown_text
     except Exception as e:
-        print(f"Error converting PDF to Markdown: {e}")
+        logger.exception(f"Error converting PDF to Markdown: {e}")
         return None
 
 def convert_to_markdown(source, is_local=False):
@@ -112,7 +114,7 @@ def convert_to_markdown(source, is_local=False):
                 
             return html_to_markdown(html_content)
     except Exception as e:
-        print(f"Error converting to Markdown: {e}")
+        logger.exception(f"Error converting to Markdown: {e}")
         return None
 
 def convert_document(url=None, local_file=None, output_file=None):
@@ -128,11 +130,11 @@ def convert_document(url=None, local_file=None, output_file=None):
         str: The Markdown content or None if conversion failed.
     """
     if url and local_file:
-        print("Error: Please provide either a URL or a local file, not both.")
+        logger.error("Error: Please provide either a URL or a local file, not both.")
         return None
     
     if not url and not local_file:
-        print("Error: Please provide either a URL or a local file.")
+        logger.error("Error: Please provide either a URL or a local file.")
         return None
     
     # Convert the document
@@ -149,8 +151,8 @@ def convert_document(url=None, local_file=None, output_file=None):
         try:
             with open(output_file, 'w', encoding='utf-8') as file:
                 file.write(markdown_content)
-            print(f"Markdown saved to {output_file}")
+            logger.info(f"Markdown saved to {output_file}")
         except Exception as e:
-            print(f"Error saving Markdown to file: {e}")
+            logger.exception(f"Error saving Markdown to file: {e}")
     
     return markdown_content
