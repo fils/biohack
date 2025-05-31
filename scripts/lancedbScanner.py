@@ -132,7 +132,7 @@ def verify_entities():
         print(f"  index: {record['index']}")
 
 
-def schema():
+def tables():
     db = lancedb.connect("./lancedb")
 
     tables = db.table_names()
@@ -148,7 +148,7 @@ def schema():
         # print(db.table(t).schema)
 
 if __name__ == "__main__":
-    schema()
+    tables()
     # verify_sources()
     # verify_claims()
     # verify_entities()
