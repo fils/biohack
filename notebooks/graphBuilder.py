@@ -28,15 +28,11 @@ entities_df['text_md5'] = entities_df['text'].apply(lambda x: hashlib.md5(str(x)
 entities_df['composite_id'] = entities_df['filename'] + '_' + entities_df['nodename'] + '_' + entities_df['index'].astype(str)
 entities_df = entities_df.dropna(subset=['composite_id'])
 
-print(claims_df)
-print("-------------------")
-print(entities_df)
-
 # model
 model = SentenceTransformer("all-MiniLM-L6-v2")
 
 # Open a new in-memory database
-db = kuzu.Database()
+db = kuzu.Database("./graphdb")
 conn = kuzu.Connection(db)
 conn.execute("INSTALL vector; LOAD vector;")
 
@@ -50,12 +46,12 @@ conn.execute("INSTALL vector; LOAD vector;")
 
 # MEW APPROACH
 # alternate node table(s) approach
-# conn.execute("CREATE NODE TABLE SOURCES(id STRING PRIMARY KEY, filename string)")
-# kuzu_sources_df = pd.DataFrame({
-#     'id': sources_df['id'],
-#     'filename': sources_df['filename']
-# })
-# conn.execute("COPY SOURCES FROM kuzu_sources_df (ignore_errors=true)")
+conn.execute("CREATE NODE TABLE SOURCES(id STRING PRIMARY KEY, filename string)")
+kuzu_sources_df = pd.DataFrame({
+    'id': sources_df['id'],
+    'filename': sources_df['filename']
+})
+conn.execute("COPY SOURCES FROM kuzu_sources_df (ignore_errors=true)")
 
 conn.execute("CREATE NODE TABLE CLAIMS(id STRING PRIMARY KEY, text string, text_embedding FLOAT[384], nodename string, filename string)")
 kuzu_sources_df = pd.DataFrame({
@@ -66,8 +62,6 @@ kuzu_sources_df = pd.DataFrame({
     'filename': claims_df['filename']
 })
 conn.execute("COPY CLAIMS FROM kuzu_sources_df (ignore_errors=true)")
-
-print(len(claims_df))
 
 conn.execute("CREATE NODE TABLE ENTITIES(id STRING PRIMARY KEY, text string, label string, nodename string, filename string)")
 kuzu_sources_df2 = pd.DataFrame({
@@ -87,32 +81,11 @@ relations_df = pd.concat([
     })
 ]).dropna()
 
-print(len(relations_df))
-
-# conn.execute("CREATE NODE TABLE Claim(id STRING PRIMARY KEY, type string)") # add in description and desc_embedding
-# conn.execute("COPY Claim FROM nodes (ignore_errors=true)") # use `ignore_errors` parameter  to ignore the erroneous rows
-
 conn.execute("CREATE REL TABLE IF NOT EXISTS rels( FROM CLAIMS TO ENTITIES)")
 res = conn.execute("COPY rels FROM relations_df")
 
 # To get properties of a specific node table
-result = conn.execute("CALL TABLE_INFO('CLAIMS') RETURN *;")
-print(result.get_as_df());
+# result = conn.execute("CALL TABLE_INFO('CLAIMS') RETURN *;")
+# print(result.get_as_df());
 
 conn.execute("CALL CREATE_VECTOR_INDEX('CLAIMS', 'text_vec_index', 'text_embedding')")
-
-print("done")
-
-query_vector = model.encode("convolutional neural network").tolist()
-result = conn.execute(
-    """
-    CALL QUERY_VECTOR_INDEX(
-        'CLAIMS',
-        'text_vec_index',
-        $query_vector,
-        5
-    )
-    RETURN node.id, node.filename, node.text ORDER BY distance;
-    """,
-    {"query_vector": query_vector})
-print(result.get_as_pl())
