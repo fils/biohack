@@ -54,14 +54,14 @@ kuzu_sources_df = pd.DataFrame({
 conn.execute("COPY SOURCES FROM kuzu_sources_df (ignore_errors=true)")
 
 conn.execute("CREATE NODE TABLE CLAIMS(id STRING PRIMARY KEY, text string, text_embedding FLOAT[384], nodename string, filename string)")
-kuzu_sources_df = pd.DataFrame({
+kuzu_sources_df1 = pd.DataFrame({
     'id': claims_df['composite_id'],
     'text': claims_df['text'],
     'text_embeddings': claims_df['text_embeddings'], #.apply(lambda x: str(x)),
     'nodename': claims_df['node_name'],
     'filename': claims_df['filename']
 })
-conn.execute("COPY CLAIMS FROM kuzu_sources_df (ignore_errors=true)")
+conn.execute("COPY CLAIMS FROM kuzu_sources_df1 (ignore_errors=true)")
 
 conn.execute("CREATE NODE TABLE ENTITIES(id STRING PRIMARY KEY, text string, label string, nodename string, filename string)")
 kuzu_sources_df2 = pd.DataFrame({
